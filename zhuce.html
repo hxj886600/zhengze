@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    
+            <div class="page-header text-center">
+                    <h1>登陆</h1>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-md-4 col-md-offset-3" >
+                            
+
+                       
+                  <div class="panel panel-default">
+                        <div class="panel-body">
+                         
+                                <form>
+                                        <div class="form-group">
+                                          <label for="txtusename">用户名</label>
+                                          <input type="text" class="form-control" id="txtusename" placeholder="请输入用户名">
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="txtpwd">密码</label>
+                                            <input type="textword" class="form-control" id="txtpwd" placeholder="密码">
+                                         </div>
+                                      
+                            
+                                     
+                                        <button type="button" id="btn" class="btn btn-primary text-center">登陆</button>
+                                      </form>
+                        </div>
+                      </div>
+                           
+                    </div>
+                    
+                  </div>
+
+
+
+
+
+    </div>
+    <script>
+        var fle1=fle2=false;
+    var txtusename=document.getElementById("txtusename");
+    var txtpwd=document.getElementById("txtpwd");
+    var btn=document.getElementById("btn");
+    var reg1=/^[^\s]+$/;
+
+    function $(id){
+    return documnent.getElementById("")
+
+    }
+    txtusename.onblur=function(){
+        if(!reg1.test(this.value)){
+       
+     
+            if(txtusename.previousElementSibling.children.length==1){
+                this.previousElementSibling.children[0].style.display="inline"
+                return false;
+            }
+            var a1="用户名不能为空！"
+           var err=document.createElement("span");
+           err.className="error";
+           err.innerHTML=a1;
+           err.style.color = 'red';
+           this.previousElementSibling.appendChild(err);
+            return false;
+        }else{
+     
+            var children1=this.previousElementSibling.children;
+            if(children1.length==1){
+              children1[0].style.display="none"  
+            }
+            return true;
+        }
+
+    }
+    var reg2=/^[\w]{6,}$/
+    txtpwd.onblur=function (){
+           
+    if(!reg2.test(this.value)){
+    
+            if(txtpwd.previousElementSibling.children.length==1){
+                this.previousElementSibling.children[0].style.display="inline"
+                return false;
+            }
+            var a2="密码必须为六位以上"
+           var err=document.createElement("span");
+           err.className="error";
+           err.innerHTML=a2;
+           err.style.color = 'red';
+           this.previousElementSibling.appendChild(err);
+           return false;
+        }else{
+     
+            var children1=this.previousElementSibling.children;
+            if(children1.length==1){
+              children1[0].style.display="none"  
+            }
+        }
+        return true;
+
+    }
+   
+    btn.onclick=function(){
+        txtusename.onblur();
+        txtpwd.onblur();
+        var as=ad=false;
+        as=txtusename.onblur();
+        ad=txtpwd.onblur();
+        if(as&&ad){
+            alert("密码正确")
+
+        }
+
+      
+
+    }
+        
+       
+      
+
+    
+
+   
+   
+    
+    
+    </script>
+</body>
+</html>
