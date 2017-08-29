@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+     .error{
+         color:red;
+     }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 class="text-primary" style="text-align:center">jquery表单注册验证框架</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="txtUserName">用户名：</label>
+                                <input type="text" class="form-control" id="txtUserName" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtEmail">电子邮件:</label>
+                                <input type="text" class="form-control" id="txtEmail" placeholder="请输入电子邮件">
+                            </div>
+                            <div class="form-group">
+                                    <label for="txtPwd">密码：</label>
+                                    <input type="password" class="form-control" id="txtPwd" placeholder="请输入密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtRepwd">重新输入密码：</label>
+                                <input type="password" class="form-control" id="txtRepwd" placeholder="请重新输入密码">
+                            </div>
+                            <button id="btn" type="button" class="btn  btn-primary">注册</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+   <script>
+       
+        function $(id){
+            return document.getElementById(id) ;
+        }
+        var txtUserName=$("txtUserName");
+        var txtEmail=$("txtEmail");
+        var txtPwd=$("txtPwd");
+        var txtRepwd=$("txtRepwd");
+
+        var flag1=flag2=flag3=flag4=false;
+        var btn=$("btn");
+
+        function createEror(txt,msg){
+            var errorNode=document.createElement("span");
+            errorNode.className="error";
+            errorNode.innerHTML=msg;
+
+            txt.previousElementSibling.appendChild(errorNode);
+
+        }
+        function valide(txt,reg,msg){
+            if(!reg.test(txt.value)){
+                if(txt.previousElementSibling.children.length==1){
+                    txt.previousElementSibling.children[0].style.display="inline";
+                    txt.previousElementSibling.children[0].innerHTML=msg;
+                    return false;
+                } 
+               
+                createEror(txt,msg);
+                return false;
+        }else{
+            var chidlren=txt.previousElementSibling.children;
+            if(chidlren.length==1){
+                chidlren[0].style.display="none";
+               
+
+
+            }
+
+            return true;
+
+
+
+        }
+        }
+        txtUserName.onblur=function(){
+
+            var msg="用户名不能为空!"
+            var reg=/^[^\s]+$/;
+           flag1=valide(this,reg,msg);
+
+        }
+        txtEmail.onblur=function(){
+
+            var msg="邮箱错误!"
+            var reg=/^\w+@[0-9a-zA-Z]+\.[a-z]+$/;
+           flag2=valide(this,reg,msg);
+
+        }
+        txtPwd.onblur=function(){
+
+            var msg="密码错误!"
+            var reg=/^\w{6,}$/;
+           flag3=valide(this,reg,msg);
+
+        }
+        txtRepwd.onblur=function(){
+
+            var msg="密码错误!"
+            var reg=/^\w{6,}$/;
+           flag4=valide(this,reg,msg);
+
+            if(flag4){
+                var reg1=new RegExp("^"+txtPwd.value+"$","");
+                var msg1="密码不一样！"
+                flag4=valide(this,reg1,msg1);
+
+            }
+        }
+
+        btn.onclick=function(){
+
+            if(flag1&&flag2&&flag3&&flag4){
+                alert("填写正确 提交表单到服务器");
+            }
+        }
+   </script>
+</body>
+</html>
