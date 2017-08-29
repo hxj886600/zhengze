@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+  <div class="a1">{{msg}}</div>
+ 
+
+  <div class="a2">
+    <ul>
+      <li>{{maa}}</li>
+      <li>{{maa}}</li>
+      <li>{{maa}}</li>
+      <input type="text" v-model="maa"/>
+    </ul>
+  </div>
+  <div class="a3">
+    <p v-if="see">hao are you</p>
+  </div>
+
+  <div class="a4">
+    <ol><li v-for="ts in tod">
+      {{ts.text}}
+      </li></ol>
+
+  </div>
+
+
+  <script>
+  var app=new Vue({
+    el:'.a2',
+    data:{
+        maa:'helllo vue!'
+    }
+
+  })
+var data={
+  msg:"hello World"
+};
+  var a1=new Vue({
+    el:'.a1',
+    data:data
+
+
+  }
+  )
+  var a3=new Vue({
+    el:'.a3',
+    data:{
+      see:false
+    }
+
+  })
+  var a4= new Vue({
+    el:'.a4',
+    data:{
+      tod:[
+        {text:'wddd'},
+        {text:'wddfd'},
+        {text:'uvhiwc'},
+        {text:'uvhvdsiwc'},
+        {text:'uvhacwc'}
+
+      ]
+
+    }
+
+  })
+
+</script>
+<div id="a5">
+  <h3>helo her {{mag}}</h3>
+<input type="button" v-on:click="fun" value="反转">
+</div>
+<script>
+  var a5=new Vue({
+    el:'#a5',
+    data:{
+      mag:'fghjk',
+    },
+    methods:{
+     fun: function(){
+
+      this.mag= this.mag.split("").reverse().join("");
+     }
+
+    }
+ 
+
+  })
+  Vue.component(""
+
+  )
+</script>
+</body>
+</html>

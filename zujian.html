@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ <div class="app">
+     <you name="uyt"></you>
+     <ol>
+        <todo-item txt="item.shi" v-for="(item,index) in todos" :key="index"></yodo-item>
+
+     </ol>
+ </div>
+<script>
+Vue.component('you',{
+    props:['name'],
+    template:'<div>我石{{name}}头</div>'
+})
+Vue.component("todo-item",{
+    props:['txt'],
+    template:"<li>{{txt}}</li>"
+}
+
+)
+ new Vue({
+    el:'.app',
+    data:{
+
+        todos:[
+            {shi:123},
+            {shi:123},
+            {shi:123},
+        ]
+
+
+
+    }
+
+ })
+
+
+
+</script>
+
+</body>
+</html>
