@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+    .ytr{
+        height: 200px;
+        width:200px;
+        border: 2px solid red;
+        background: yellow;
+    }
+    .as1{
+        width: 200px;
+        height: 500px;
+        background: red;
+
+    }
+    </style>
+
+
+</head>
+<body>
+      <div class="a1">
+        <div class="ytr" v-pintp.left.top="fixe1d">
+            <input type="button" value="按钮" @click="fixe1d=!fixe1d">
+        为开展相关业务所需的帮助，互为优先代理，在必要时双方可互相提供服务支持，包括双方的产品和解决方案；共同寻找商业机会，拓展市场，优先选择对方为合作伙伴，参加招投标、方案提供等市场活动；双方合作IBM
+        </div>
+      <div class="as1" v-pintp:blue.right.top="fixe11d">
+          <a @click="fixe11d=!fixe11d" >固定</a>
+            <h2>we</h2>
+            <p>youhoca</p>
+            <p>就啊粗比较哦啊u不错呢</p>
+      </div>
+
+      </div>
+  <script>
+Vue.directive('pintp',function(el,binding){
+console.log(el);
+console.log(binding);
+var value=binding.value;
+var mod=binding.modifiers  ;
+var arg=binding.arg;
+
+    if(value){
+        console.log(value)
+    el.style.position="fixed";
+    for ( var prop in  mod){
+        el.style[prop]="10px"
+    }
+    console.log(arg)
+    el.style.background=arg
+    }else{
+        console.log(value)
+    el.style.position="static";
+   
+
+
+
+    }
+
+
+})
+
+var vm= new Vue({
+    el:'.a1',
+ 
+    data:{
+        fixe1d:true,
+        fixe11d:false,
+    }
+})
+
+  
+  
+  </script>
+
+</body>
+</html>
