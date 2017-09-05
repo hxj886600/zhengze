@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>v-if v-for shiyong </title>
+   <script src="https://unpkg.com/vue"></script>
+    
+<body>
+        <div id='a1'>
+            <bcdt v-bind:mag1="mag2"></bcdt>
+            <pantl></pantl >
+      
+            </div>
+        <script type="text/x-template" id="aqw">
+        <div>
+            <input type="button" value="点击" @click="cmwed">
+        </div>
+        </script>
+        <script>
+            var bus=new Vue()
+          var asd={
+            props:['mag1'],
+            template:'#aqw',
+            methods:{
+                cmwed:function(){
+                  bus.$emit("pasd",1,2)
+                   }
+            },
+          }
+          var pantl={
+
+              template:'<div>{{id}}</div>',
+              data:function(){
+                  return {
+                      id:0
+                  }
+              },
+              mounted:function(){
+                  var thay=this;
+                  bus.$on("pasd",function(ar1,ar2){
+                    thay.id=ar2+ar1
+                  })
+              }
+
+          }
+        var vm= new Vue({
+        el:"#a1",
+        data:
+            {mag2:'you huaobaib uaco'},
+      
+
+            components:{
+                    'bcdt':asd,
+                    'pantl':pantl,
+                },
+            methods:{
+                jieshoufn:function(arr1,arr2){
+                    alert("接收");
+                   console.log(arr1);
+                   console.log(arr2);
+
+                }
+            }
+
+        })
+
+
+</script>
+
+</body>
+</html>
